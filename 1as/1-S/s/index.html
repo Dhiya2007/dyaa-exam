@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- تحميل خط مخصص من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=El+Messiri:wght@400..700&family=Fustat:wght@200..800&family=Harmattan:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400..700&family=Zain:wght@200;300;400;700;800;900&display=swap');
+     
+        body {
+           font-family: "Zain", sans-serif;
+            font-weight: 600;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            overflow: hidden;
+            width: 350px;
+            transform: scale(1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s;
+        }
+
+        .card img:hover {
+            opacity: 0.8;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .card h2 {
+            margin: 1rem 0 15px;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            padding: 12px 24px;
+            font-size: 16px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        /* نافذة منبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+         
+         section{
+          min-height: 100vh;
+        }
+        footer{
+          padding: 1rem;
+          bottom: 0;
+          color: #fff;
+          text-align: center;
+          font-size: 1.3rem;
+          background-color: black;
+        }
+        footer a{
+          text-decoration: none;
+          font-size: 1.5rem;
+          color: #2ef;
+          text-shadow: 2px 2px 5px #2ed;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header"> ( 1-ST )  
+    علوم طبيعية 
+    </div>
+<section>
+    <div class="container">
+        <div class="card">
+            <h2>2024/&/&</h2>
+            <img src="img/1.jpg" alt="صورة 1">
+            <div class="card-content">
+                <button class="btn" onclick="openModal('img/2.jpg')">عرض التصحيح</button>
+            </div>
+        </div>
+        <!-- إضافة المزيد -->
+ 
+ 
+ 
+    </div>
+    <!-- نافذة منبثقة -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="صورة التصحيح النموذجي للإختبار">
+        </div>
+    </div>
+    </section>
+<footer>
+  <p>developed by <a href="https://dhiya.netlify.app">dyaa</a></p>
+</footer>
+    <script>
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
